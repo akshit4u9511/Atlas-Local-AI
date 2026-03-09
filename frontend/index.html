@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Multimodal Local AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h2>Atlas</h2>
+                <button id="new-chat-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+                        <path d="M12 5v14m-7-7h14"></path>
+                    </svg>
+                    New Chat
+                </button>
+            </div>
+
+            <div id="conversation-list"></div>
+
+            <div class="sidebar-footer-group">
+                <button id="clear-history-btn" class="danger-btn">Clear All History</button>
+                <div class="sidebar-footer">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="agent-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="mode-label">Agent Mode (Local)</span>
+                </div>
+            </div>
+        </aside>
+
+        <main id="chat-container">
+            <div id="chat-messages">
+                <div class="empty-state">
+                    <h1>How can I help you today?</h1>
+                    <p>I am Atlas, processing locally and privately on your machine.</p>
+                </div>
+            </div>
+
+            <div id="input-container">
+                <div class="generation-modes">
+                    <button class="mode-btn active" data-mode="text">Text</button>
+                    <button class="mode-btn" data-mode="image">Image</button>
+                    <button class="mode-btn" data-mode="video">Video</button>
+                    <button class="mode-btn" data-mode="audio">Audio</button>
+                    <button class="mode-btn" data-mode="faceswap">Face Swap</button>
+                </div>
+
+                <div id="faceswap-upload-zone" class="upload-zone hidden">
+                    <div class="upload-item" id="source-upload">
+                        <span>Upload Source Face</span>
+                        <img id="source-preview" src="">
+                        <input type="file" id="source-input" accept="image/*">
+                    </div>
+                    <div class="upload-item" id="target-upload">
+                        <span>Upload Target (Image/Video)</span>
+                        <img id="target-preview" src="">
+                        <input type="file" id="target-input" accept="image/*,video/*">
+                    </div>
+                </div>
+
+                <form id="chat-form">
+                    <textarea id="message-input" placeholder="Message Atlas..." rows="1"></textarea>
+                    <button type="submit" id="send-btn" disabled>
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                            fill="none">
+                            <path d="M22 2L11 13m11-11l-7 20-4-9-9-4 20-7z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <div id="generation-settings" class="hidden">
+                    <div id="settings-image" class="settings-group hidden">
+                        <label>Res: <select id="img-res">
+                                <option value="1024">1024px (Ultra Quality)</option>
+                                <option value="768">768px (Balanced)</option>
+                                <option value="512">512px (Fast)</option>
+                            </select></label>
+                        <label>Steps: <input type="number" id="img-steps" value="20" min="1"></label>
+                        <label>CFG: <input type="number" id="img-cfg" value="7.5" step="0.5"></label>
+                    </div>
+                    <div id="settings-video" class="settings-group hidden">
+                        <label>Frames: <input type="number" id="vid-frames" value="24" min="8" max="48"></label>
+                    </div>
+                    <div id="settings-audio" class="settings-group hidden">
+                        <label>Duration (s): <input type="number" id="aud-dur" value="5" min="2" max="15"></label>
+                    </div>
+                </div>
+
+                <div class="disclaimer">Atlas can make mistakes. Local Inference Active. GPU is dynamically shared.
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
