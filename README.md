@@ -5,6 +5,9 @@ Atlas Local AI is a **multimodal AI platform** that combines conversational AI, 
 Built for **local execution**, Atlas prioritizes **privacy, speed, and creative freedom** while allowing users to generate text, images, and videos directly from their own machine.
 
 ---
+## Demo
+
+![Atlas Local AI Demo](https://github.com/akshit4u9511/Atlas-Local-AI/blob/35271abd833073a4fa9f9db4fddbe5002676868e/Images/image.png)
 
 # Features
 
